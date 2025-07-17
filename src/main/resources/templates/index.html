@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html xmlns:th="http://www.thymeleaf.org"> 
+
+<head>
+    <title>To-Do List</title> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- CSS for styling -->
+</head>
+
+<body class="bg-light"> 
+
+<div class="container mt-5"> 
+    <h2 class="text-center mb-4">📝 To-Do List</h2> 
+
+    <!-- form to submit new tasks -->
+    <form th:action="@{/add}" method="post" class="input-group mb-3"> <!-- sends POST request to "/add" -->
+        <input type="text" name="task" class="form-control" placeholder="Enter a task" required> <!-- input field for task text -->
+        <button type="submit" class="btn btn-primary">Add</button> <!-- submit button -->
+    </form>
+
+    <!-- loop through the list of todos and display each one -->
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            th:each="todo : ${todos}"> <!-- loops over the 'todos' model attribute -->
+            <span th:text="${todo.task}"></span> <!-- displays the task name -->
+            <a th:href="@{'/delete/' + ${todo.id}}" class="btn btn-sm btn-danger">Delete</a> <!-- delete button linking to /delete/{id} -->
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

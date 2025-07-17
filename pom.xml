@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--for identifying the project -->
+    <groupId>com.example</groupId> <!-- base package name -->
+    <artifactId>todo-app</artifactId> <!-- name of the app -->
+    <version>0.0.1-SNAPSHOT</version> <!-- app version during development -->
+
+    <!-- type of artifact to be built -->
+    <packaging>jar</packaging>
+
+    <!-- descriptive metadata -->
+    <name>todo-app</name>
+    <description>Simple Spring Boot To-Do App</description>
+
+    <!-- Spring Boot parent brings in default configurations and dependencies -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version> <!-- Spring Boot version -->
+        <relativePath/> <!-- tells Maven not to search for parent in local dir -->
+    </parent>
+
+    <!-- set the Java version used for compilation -->
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
+    <!-- dependencies -->
+    <dependencies>
+        <!-- Spring Boot Web: provides REST APIs, embedded Tomcat, etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Thymeleaf: for frontend -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- Spring Data JPA: for database interactions -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- H2 database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- DevTools: enables live reload, faster dev experience -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- ✅ Maven build plugin configuration -->
+    <build>
+        <plugins>
+            <!-- Plugin to package and run Spring Boot apps -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
